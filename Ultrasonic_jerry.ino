@@ -16,11 +16,9 @@ void setup()
   pinMode(trigger, OUTPUT);
   pinMode(echo, INPUT);
   printToScreen(lcd, 0, 0, "Ultrasonic", false);
-  // lcd.print(" Ultrasonic");
+
   printToScreen(lcd, 0, 1, "Distance Meter", false);
-  // lcd.setCursor(0, 1);
-  // lcd.print("Distance Meter");
-  // lcd.clear();
+
   delay(1000); // wait 1 second
   lcd.print("Calibrating...");
   // check distance here
@@ -37,10 +35,9 @@ void setup()
   for (int i = 0; i < 10000; i++)
   {
     getDistance(&distance);
-    // lcd.clear();
-    // lcd.setCursor(0, 1);
+
     printToScreen(lcd, 0, 1, distance, true);
-    // lcd.print(String(distance));
+
     Serial.print(i);
     Serial.print("\t");
     Serial.print(millis());
@@ -49,10 +46,10 @@ void setup()
   }
   long en = millis();
   Serial.print("\n\n\nOperation took ");
-  double elapsed = (begin - en) / 1000;
+  double elapsed = (en - begin) / 1000;
   Serial.print(elapsed);
   Serial.println(" seconds to complete.");
-  Serial.println("\n\n\n\n Average time: \t" + String(elapsed / 1000000) + "s");
+  Serial.println("\n\n\n\n Average time: \t" + String(elapsed / 10000) + "s");
 
   while (1)
     ;
