@@ -1,0 +1,39 @@
+const int ledPin = 13;
+const int ldrPin = A0;
+
+void setup() {
+
+Serial.begin(9600);
+pinMode(ledPin, OUTPUT);
+pinMode(ldrPin, INPUT);
+}
+void loop() {
+  
+digitalWrite (ledPin, HIGH);
+int ldrStatus = analogRead(ldrPin);
+  Serial.println (ldrStatus);
+
+  if (ldrStatus <= 23){
+    Serial.println ("black");
+  }
+  else if (ldrStatus >=31 && ldrStatus<=34 ){
+    Serial.println ("yellow");
+      }
+  else if (ldrStatus >=35 ){
+    Serial.println ("white");
+  }
+  else if (ldrStatus >= 24 && ldrStatus<=26 ){
+   Serial.println ("RED");
+  }
+  else if (ldrStatus >= 27 && ldrStatus<=30){
+    Serial.println ("blue");
+    
+  }
+
+else {
+
+
+Serial.println("Unknown");
+
+}
+}
